@@ -1,0 +1,21 @@
+{
+  "name": "lazyxchacha",
+  "description": "Lazy XChaCha20-Poly1305 in JavaScript base on RustCrypto: ChaCha20Poly1305.",
+  "version": "0.1.9",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prongbang/lazyxchacha-js"
+  },
+  "files": [
+    "lazyxchacha_bg.wasm",
+    "lazyxchacha.js",
+    "lazyxchacha.d.ts"
+  ],
+  "main": "lazyxchacha.js",
+  "types": "lazyxchacha.d.ts",
+  "keywords": [
+    "lazyxchacha",
+    "xchacha"
+  ]
+}
