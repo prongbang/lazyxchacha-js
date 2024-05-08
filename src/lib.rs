@@ -1,10 +1,8 @@
 mod utils;
+mod keypair;
+mod hex;
 
 use wasm_bindgen::prelude::*;
-use crate::utils::set_panic_hook;
-
-#[wasm_bindgen]
-pub struct LazyXChaCha {}
 
 #[wasm_bindgen]
 pub fn encrypt(plaintext: &str, key: &str) -> String {

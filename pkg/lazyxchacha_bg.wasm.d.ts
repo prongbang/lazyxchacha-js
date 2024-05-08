@@ -1,7 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
-export function __wbg_lazyxchacha_free(a: number): void;
+export function decode(a: number, b: number, c: number): void;
+export function encode(a: number, b: number, c: number): void;
 export function decrypt(a: number, b: number, c: number, d: number, e: number): void;
 export function hello(a: number): void;
 export function encrypt(a: number, b: number, c: number, d: number, e: number): void;
