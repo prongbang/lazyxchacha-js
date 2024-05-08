@@ -4,12 +4,12 @@
 * @param {string} text
 * @returns {Uint8Array}
 */
-export function decode(text: string): Uint8Array;
+export function from_hex(text: string): Uint8Array;
 /**
 * @param {Uint8Array} byte
 * @returns {string}
 */
-export function encode(byte: Uint8Array): string;
+export function to_hex(byte: Uint8Array): string;
 /**
 * @param {string} plaintext
 * @param {string} key

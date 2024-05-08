@@ -1,18 +1,9 @@
 mod utils;
 mod keypair;
 mod hex;
+mod lazyxchacha;
 
 use wasm_bindgen::prelude::*;
-
-#[wasm_bindgen]
-pub fn encrypt(plaintext: &str, key: &str) -> String {
-    return plaintext.to_string();
-}
-
-#[wasm_bindgen]
-pub fn decrypt(ciphertext: &str, key: &str) -> String {
-    return ciphertext.to_string();
-}
 
 #[wasm_bindgen]
 pub fn hello() -> String {
