@@ -1,6 +1,6 @@
 [package]
 name = "lazyxchacha"
-version = "0.1.9"
+version = "0.1.10"
 description = "Lazy XChaCha20-Poly1305 in JavaScript base on RustCrypto: ChaCha20Poly1305."
 edition = "2018"
 license-file = "LICENSE"
