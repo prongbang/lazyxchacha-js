@@ -16,7 +16,7 @@ default = ["console_error_panic_hook"]
 [dependencies]
 wasm-bindgen = "0.2.84"
 chacha20poly1305 = "0.10.1"
-x25519-dalek = { version = "2.0.1", features = ["getrandom"] }
+x25519-dalek = { version = "2.0.1", features = ["getrandom", "static_secrets"] }
 faster-hex = "0.9.0"
 getrandom = { version = "0.2", features = ["js"] }
 
