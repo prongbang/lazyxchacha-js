@@ -1,7 +1,7 @@
 let imports = {};
 imports['__wbindgen_placeholder__'] = module.exports;
 let wasm;
-const { TextDecoder, TextEncoder } = require(`util`);
+const { TextDecoder, TextEncoder } = process.client ? globalThis : require('util');
 
 const heap = new Array(128).fill(undefined);
 

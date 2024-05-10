@@ -1,7 +1,7 @@
 {
   "name": "lazyxchacha",
   "description": "Lazy XChaCha20-Poly1305 in JavaScript base on RustCrypto: ChaCha20Poly1305.",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 [package]
 name = "lazyxchacha"
-version = "0.1.10"
+version = "0.1.11"
 description = "Lazy XChaCha20-Poly1305 in JavaScript base on RustCrypto: ChaCha20Poly1305."
 edition = "2018"
 license-file = "LICENSE"
@@ -26,6 +26,7 @@ getrandom = { version = "0.2", features = ["js"] }
 # code size when deploying.
 console_error_panic_hook = { version = "0.1.7", optional = true }
 hex = "0.4.3"
+js-sys = "0.3.69"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.34"
