@@ -19,15 +19,21 @@ pub fn shared_key(pk: String, sk: String) -> String {
     hex::to_hex(shared_key_bytes.to_vec())
 }
 
+#[wasm_bindgen(getter_with_clone)]
+pub struct KeyPair {
+    pub pk: String,
+    pub sk: String,
+}
+
 #[wasm_bindgen]
-pub fn new_keypair() -> Vec<String> {
+pub fn new_keypair() -> KeyPair {
     let sk = StaticSecret::random();
     let pk = PublicKey::from(&sk);
     let pk_hex = hex::to_hex(pk.as_bytes().to_vec());
     let sk_hex = hex::to_hex(sk.as_bytes().to_vec());
 
-    let mut keypair = vec![pk_hex, sk_hex];
-    keypair.swap(0, 1);
-
-    keypair
+    KeyPair {
+        pk: pk_hex,
+        sk: sk_hex,
+    }
 }
