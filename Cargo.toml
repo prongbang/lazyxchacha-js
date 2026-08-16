@@ -1,6 +1,6 @@
 [package]
 name = "lazyxchacha"
-version = "0.1.12"
+version = "1.0.2"
 description = "Lazy XChaCha20-Poly1305 in JavaScript base on RustCrypto: ChaCha20Poly1305."
 edition = "2018"
 license-file = "LICENSE"
@@ -15,9 +15,13 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 wasm-bindgen = "0.2.84"
-lazyxchacha = "0.1.3"
+lazyxchacha = "0.2.0"
 faster-hex = "0.9.0"
+# Two getrandom majors are in the tree: 0.2 via x25519-dalek's rand_core, and
+# 0.4 via chacha20poly1305's crypto-common. Both need their wasm backend turned
+# on or `wasm32-unknown-unknown` has no entropy source.
 getrandom = { version = "0.2", features = ["js"] }
+getrandom_v04 = { package = "getrandom", version = "0.4", features = ["wasm_js"] }
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires

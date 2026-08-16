@@ -1,0 +1,4 @@
+[target.wasm32-unknown-unknown]
+# getrandom >= 0.3 requires this cfg in addition to the `wasm_js` feature
+# before it will use the Web Crypto backend on wasm32-unknown-unknown.
+rustflags = ['--cfg', 'getrandom_backend="wasm_js"']
