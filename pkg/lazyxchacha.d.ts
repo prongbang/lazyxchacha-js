@@ -1,45 +1,30 @@
 /* tslint:disable */
 /* eslint-disable */
-/**
-* @param {string} text
-* @returns {Uint8Array}
-*/
-export function from_hex(text: string): Uint8Array;
-/**
-* @param {Uint8Array} byte
-* @returns {string}
-*/
-export function to_hex(byte: Uint8Array): string;
-/**
-* @param {string} plaintext
-* @param {string} key
-* @returns {string}
-*/
-export function encrypt(plaintext: string, key: string): string;
-/**
-* @param {string} ciphertext
-* @param {string} key
-* @returns {string}
-*/
-export function decrypt(ciphertext: string, key: string): string;
-/**
-* @param {string} pk
-* @param {string} sk
-* @returns {string}
-*/
-export function shared_key(pk: string, sk: string): string;
-/**
-* @returns {KeyPair}
-*/
-export function new_keypair(): KeyPair;
-/**
-*/
+
 export class KeyPair {
-  free(): void;
-/**
-*/
-  pk: string;
-/**
-*/
-  sk: string;
+    private constructor();
+    free(): void;
+    [Symbol.dispose](): void;
+    pk: string;
+    sk: string;
 }
+
+export function decrypt(ciphertext: string, key: string): string;
+
+export function decrypt_bytes(ciphertext: Uint8Array, key: string): string;
+
+export function decrypt_raw(ciphertext: Uint8Array, key: string): Uint8Array;
+
+export function encrypt(plaintext: string, key: string): string;
+
+export function encrypt_bytes(plaintext: string, key: string): Uint8Array;
+
+export function encrypt_raw(plaintext: Uint8Array, key: string): Uint8Array;
+
+export function from_hex(text: string): Uint8Array;
+
+export function new_keypair(): KeyPair;
+
+export function shared_key(pk: string, sk: string): string;
+
+export function to_hex(byte: Uint8Array): string;
