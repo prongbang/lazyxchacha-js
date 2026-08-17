@@ -41,6 +41,7 @@ verify:
 		const m = new Uint8Array([1,2,3,4,5]); \
 		const out = decrypt_raw(encrypt_raw(m, k), k); \
 		if (String(out) !== String(m)) { console.error('FAIL: node roundtrip'); process.exit(1); }"
+	@node scripts/verify-kat.mjs
 	@echo "ok: pkg/web is browser-safe, pkg/node round-trips"
 
 replace:

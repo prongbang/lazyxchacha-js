@@ -32,6 +32,14 @@ console_error_panic_hook = { version = "0.1.7", optional = true }
 [dev-dependencies]
 wasm-bindgen-test = "0.3.34"
 
+# chacha20 0.10.1 has no wasm SIMD backend, so on wasm32 it runs the scalar
+# `soft` path — measured 332 MB/s here while poly1305 does 2.4 GB/s, i.e. the
+# cipher is ~87% of AEAD time. The vendored copy adds backends/simd128.rs, a
+# lane-for-lane port of the crate's own sse2.rs. Drop this patch when
+# RustCrypto ships a simd128 backend upstream.
+[patch.crates-io]
+chacha20 = { path = "vendor/chacha20" }
+
 [profile.release]
 # ChaCha20 and Poly1305 are tight arithmetic loops and this is the only thing
 # the crate does, so size-optimising them was a poor trade: `opt-level = "s"`
@@ -39,3 +47,10 @@ wasm-bindgen-test = "0.3.34"
 # +simd128 the Makefile passes, the wasm comes out *smaller* as well (85,876 vs
 # 86,708 bytes) — vectorising costs less code than unrolling scalar rounds.
 opt-level = 3
+# Fat LTO + one codegen unit lets LLVM inline the whole chacha20/poly1305
+# round loop into a single unit before vectorising it.
+lto = "fat"
+codegen-units = 1
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-O4", "--enable-simd"]
