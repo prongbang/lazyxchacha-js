@@ -9,6 +9,15 @@ create:
 # An `exports` map picks per runtime, so callers just `import "lazyxchacha"`.
 # wasm-pack rewrites pkg/package.json on every build, hence the merge step.
 # https://github.com/rustwasm/wasm-pack/issues/837
+# wasm32-unknown-unknown leaves SIMD off by default, which leaves ChaCha20 —
+# a cipher designed around vector registers — running its rounds one word at a
+# time. Turning it on measured +46% in Chrome for a smaller binary. The cost is
+# a hard floor: a runtime without WebAssembly SIMD fails to *validate* the
+# module, so it errors at import rather than running slower. That means Chrome
+# 91+, Firefox 89+, Safari 16.4+ and Node 16+. To support anything older, build
+# a second copy without this flag and pick with WebAssembly.validate().
+export RUSTFLAGS := -C target-feature=+simd128
+
 build:
 	rm -rf pkg
 	wasm-pack build --target web --release --out-dir pkg/web

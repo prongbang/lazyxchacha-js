@@ -1,6 +1,6 @@
 [package]
 name = "lazyxchacha"
-version = "1.0.6"
+version = "1.0.7"
 description = "Lazy XChaCha20-Poly1305 in JavaScript base on RustCrypto: ChaCha20Poly1305."
 edition = "2018"
 license-file = "LICENSE"
@@ -33,5 +33,9 @@ console_error_panic_hook = { version = "0.1.7", optional = true }
 wasm-bindgen-test = "0.3.34"
 
 [profile.release]
-# Tell `rustc` to optimize for small code size.
-opt-level = "s"
+# ChaCha20 and Poly1305 are tight arithmetic loops and this is the only thing
+# the crate does, so size-optimising them was a poor trade: `opt-level = "s"`
+# measured 204 MB/s in Chrome against 303 MB/s here, and paired with the
+# +simd128 the Makefile passes, the wasm comes out *smaller* as well (85,876 vs
+# 86,708 bytes) — vectorising costs less code than unrolling scalar rounds.
+opt-level = 3
